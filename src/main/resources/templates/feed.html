@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-    <title>Log in</title>
+    <title>Feed</title>
     <div th:replace="/fragments/stylesAndScripts :: head-styling"></div>
 </head>
 <body>
@@ -10,6 +10,9 @@
 
 <div class="container">
     <h2>Tweets</h2>
+    <div th:if="${tweetList.isEmpty()}">
+        No Tweets Available!
+    </div>
     <div th:each="tweet:${tweetList}">
         <h5>@<span th:text="${tweet.user.username}"></span>
             <small><span th:text="${#dates.format(tweet.createdAt, 'M/d/yy')}"></span></small></h5>
