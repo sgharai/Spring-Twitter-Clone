@@ -25,7 +25,7 @@ public class TweetController {
 
     @GetMapping(value= {"/tweets", "/"})
     public String getFeed(Model model){
-        List<Tweet> tweets = tweetService.findAll();
+        List<Tweet> tweets = tweetService.findAllByUsers(userService.getLoggedInUser().getFollowing());
         model.addAttribute("tweetList", tweets);
         return "feed";
     }

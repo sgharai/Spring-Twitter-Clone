@@ -15,7 +15,9 @@
     </div>
     <ul class="list-group">
         <li class="list-group-item" th:each="tweet:${tweetList}">
-            <h5>@<span th:text="${tweet.user.username}"></span>
+            <h5>
+                @<a th:href="@{/users/} + ${tweet.user.username}"><span th:text="${tweet.user.username}"></span></a>
+
                 <small><span th:text="${#dates.format(tweet.createdAt, 'M/d/yy')}"></span></small></h5>
             <p th:utext="${tweet.message}"></p>
         </li>
