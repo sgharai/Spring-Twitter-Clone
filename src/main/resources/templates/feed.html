@@ -13,11 +13,13 @@
     <div th:if="${tweetList.isEmpty()}">
         No Tweets Available!
     </div>
-    <div th:each="tweet:${tweetList}">
-        <h5>@<span th:text="${tweet.user.username}"></span>
-            <small><span th:text="${#dates.format(tweet.createdAt, 'M/d/yy')}"></span></small></h5>
-        <p th:utext="${tweet.message}"></p>
-    </div>
+    <ul class="list-group">
+        <li class="list-group-item" th:each="tweet:${tweetList}">
+            <h5>@<span th:text="${tweet.user.username}"></span>
+                <small><span th:text="${#dates.format(tweet.createdAt, 'M/d/yy')}"></span></small></h5>
+            <p th:utext="${tweet.message}"></p>
+        </li>
+    </ul>
 </div>
     <div th:replace="/fragments/stylesAndScripts :: body-scripts"></div>
 </body>
